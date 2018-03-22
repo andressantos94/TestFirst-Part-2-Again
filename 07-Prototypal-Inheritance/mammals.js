@@ -8,10 +8,10 @@ Mammal.prototype.sayHello = function(){
 }
 
 Mammal.prototype.haveBaby = function(){
-    var obj = {};
-    obj.name = 'Baby '+this.name;
-    this.offspring.push(obj);
-    return obj;
+    var child = Object.create(Mammal.prototype);
+    child.name = 'Baby '+this.name;
+    this.offspring.push(child);
+    return child;
 }
 
 function Cat(name,col){
@@ -23,9 +23,7 @@ Cat.prototype = Object.create(Mammal.prototype);
 Cat.prototype.constructor = Cat;
 
 Cat.prototype.haveBaby = function(col){
-    var obj = {};
-    obj.name = 'Baby '+this.name;
-    obj.color = col;
-    this.offspring.push(obj);
-    return obj;
+    var cat = new Cat('Baby '+this.name,col);
+    this.offspring.push(cat);
+    return cat;
 }
