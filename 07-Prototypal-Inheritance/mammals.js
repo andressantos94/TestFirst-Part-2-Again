@@ -1,5 +1,5 @@
-function Mammal(str){
-    this.name = str;
+function Mammal(name){
+    this.name = name;
     this.offspring = [];
 }
 
@@ -14,16 +14,16 @@ Mammal.prototype.haveBaby = function(){
     return child;
 }
 
-function Cat(name,col){
+function Cat(name,color){
     Mammal.call(this,name);
-    this.color = col;
+    this.color=color;
 }
 
 Cat.prototype = Object.create(Mammal.prototype);
 Cat.prototype.constructor = Cat;
 
-Cat.prototype.haveBaby = function(col){
-    var cat = new Cat('Baby '+this.name,col);
+Cat.prototype.haveBaby = function(color){
+    var cat = new Cat('Baby '+this.name,color);
     this.offspring.push(cat);
     return cat;
 }
